@@ -77,7 +77,7 @@ const projects = [
 
 function App() {
   return (
-    <main className="min-h-screen overflow-hidden bg-transparent text-moonlight">
+    <main className="min-h-screen overflow-hidden bg-transparent text-graveyard">
       {/* Navigation */}
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-6 md:px-10">
         <a href="#home" className="flex items-center gap-3">

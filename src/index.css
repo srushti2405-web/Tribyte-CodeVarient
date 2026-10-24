@@ -2,12 +2,18 @@
 @import "tailwindcss";
 
 @theme {
-  --color-graveyard: #090B10;
+  /* --color-graveyard: #090B10;
   --color-archive: #151923;
   --color-revival: #A7F3D0;
   --color-ghost: #C4B5FD;
   --color-moonlight: #F3F4F6;
-  --color-ash: #9299A8;
+  --color-ash: #9299A8; */
+  --color-obsidian: #101820;
+  --color-shrine: #571f24;
+  --color-blood-moon: #b9474b;
+  --color-lantern: #d69a62;
+  --color-mist: #34404b;
+  --color-moonlight: #d8d0c4;
 
   --font-display: "Space Grotesk", sans-serif;
   --font-body: "DM Sans", sans-serif;
