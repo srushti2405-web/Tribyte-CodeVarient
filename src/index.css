@@ -1,151 +1,251 @@
-
 @import "tailwindcss";
 
-@theme {
-  /* --color-graveyard: #090B10;
-  --color-archive: #151923;
-  --color-revival: #A7F3D0;
-  --color-ghost: #C4B5FD;
-  --color-moonlight: #F3F4F6;
-  --color-ash: #9299A8; */
+@theme{
   --color-obsidian: #101820;
   --color-shrine: #571f24;
   --color-blood-moon: #b9474b;
   --color-lantern: #d69a62;
   --color-mist: #34404b;
   --color-moonlight: #d8d0c4;
-
-  --font-display: "Space Grotesk", sans-serif;
-  --font-body: "DM Sans", sans-serif;
 }
 
-html {
-  scroll-behavior: smooth;
-}
-
-
-body {
-  margin: 0;
-  min-height: 100vh;
-  background-color: #03070b;
-  background-image:
-    linear-gradient(
-      to bottom,
-      rgba(2, 6, 12, 0.25),
-      rgba(2, 6, 12, 0.62)
-    ),
-    url('/download.jpg');
-  background-size: cover;
-  background-position: center top;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  color: #F3F4F6;
-  font-family: "DM Sans", sans-serif;
-}
-
-#root {
-  min-height: 100vh;
-  width: 100%;
-  position: relative;
-  z-index: 1;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-
-
-/* Creepy drifting fog */
-body::before {
-  content: "";
-  position: fixed;
-  inset: -20%;
-  z-index: 0;
-  pointer-events: none;
-  background:
-    radial-gradient(ellipse at 20% 70%, rgba(190, 205, 220, 0.30), transparent 48%),
-    radial-gradient(ellipse at 75% 65%, rgba(196, 181, 253, 0.22), transparent 52%),
-    radial-gradient(ellipse at 50% 90%, rgba(210, 220, 230, 0.22), transparent 45%);
-  filter: blur(28px);
-  animation: hauntedFog 9s ease-in-out infinite alternate;
-}
-
-@keyframes hauntedFog {
+@keyframes sway {
   0% {
-    transform: translate(-5%, 2%) scale(1);
+    transform: translateY(0rem) rotate(0deg);
   }
-  100% {
-    transform: translate(5%, -2%) scale(1.12);
-  }
-}
-
-
-
-/* Flying bats across the haunted sky */
-.bat {
-  position: fixed;
-  top: 18%;
-  left: -80px;
-  z-index: 3;
-  pointer-events: none;
-  color: #050609;
-  font-size: 30px;
-  opacity: 0;
-  animation: flyAcross 18s linear infinite;
-}
-
-.bat-two {
-  top: 28%;
-  font-size: 22px;
-  animation-duration: 24s;
-  animation-delay: 5s;
-}
-
-.bat-three {
-  top: 12%;
-  font-size: 18px;
-  animation-duration: 21s;
-  animation-delay: 10s;
-}
-
-@keyframes flyAcross {
-  0% {
-    left: -80px;
-    opacity: 0;
-    transform: translateY(0) rotate(-8deg);
-  }
-
-  10% {
-    opacity: 0.9;
-  }
-
   50% {
-    transform: translateY(-35px) rotate(8deg);
+    transform: translateY(0.375rem) rotate(0.4deg);
   }
+  100% {
+    transform: translateY(-0.25rem) rotate(-0.4deg);
+  }
+}
 
-  90% {
+@keyframes fairyBulbGlow {
+  0%, 100% {
+    opacity: 0.85;
+    transform: scale(1);
+    filter: drop-shadow(0 0 0.4rem #fbbf24) drop-shadow(0 0 0.8rem #f59e0b);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.15);
+    filter: drop-shadow(0 0 0.65rem #fde047) drop-shadow(0 0 1.25rem #f59e0b);
+  }
+}
+
+@keyframes hangingCardSway1 {
+  0% {
+    transform: rotate(-1.5deg) translateY(0rem);
+  }
+  50% {
+    transform: rotate(1.8deg) translateY(0.35rem);
+  }
+  100% {
+    transform: rotate(-1.5deg) translateY(0rem);
+  }
+}
+
+@keyframes hangingCardSway2 {
+  0% {
+    transform: rotate(1.6deg) translateY(0.2rem);
+  }
+  50% {
+    transform: rotate(-1.4deg) translateY(0rem);
+  }
+  100% {
+    transform: rotate(1.6deg) translateY(0.2rem);
+  }
+}
+
+@keyframes wireBreeze {
+  0%, 100% {
+    transform: translateY(0rem) scaleY(1);
+  }
+  50% {
+    transform: translateY(0.5rem) scaleY(1.05);
+  }
+}
+
+@keyframes subtleLanternPulse {
+  0%, 100% {
+    filter: drop-shadow(0 0 0.8rem rgba(214, 154, 98, 0.45));
+  }
+  50% {
+    filter: drop-shadow(0 0 1.4rem rgba(245, 158, 11, 0.7));
+  }
+}
+
+@keyframes dustFloat {
+  0% {
+    transform: translateY(0rem) translateX(0rem);
+    opacity: 0.3;
+  }
+  50% {
+    transform: translateY(-0.75rem) translateX(0.35rem);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(-1.5rem) translateX(-0.25rem);
+    opacity: 0.1;
+  }
+}
+
+@keyframes washiFlutter {
+  0%, 100% {
+    transform: rotate(var(--rot, 0deg)) translateY(0rem);
+  }
+  50% {
+    transform: rotate(calc(var(--rot, 0deg) + 0.6deg)) translateY(0.1rem);
+  }
+}
+
+@keyframes astrolabeRingSpin1 {
+  0% {
+    transform: rotateX(65deg) rotateZ(0deg);
+  }
+  100% {
+    transform: rotateX(65deg) rotateZ(360deg);
+  }
+}
+
+@keyframes astrolabeRingSpin2 {
+  0% {
+    transform: rotateY(55deg) rotateZ(0deg);
+  }
+  100% {
+    transform: rotateY(55deg) rotateZ(-360deg);
+  }
+}
+
+@keyframes astrolabeRingSpin3 {
+  0% {
+    transform: rotateX(40deg) rotateY(40deg) rotateZ(0deg);
+  }
+  100% {
+    transform: rotateX(40deg) rotateY(40deg) rotateZ(360deg);
+  }
+}
+
+@keyframes chibiGrimBob {
+  0%, 100% {
+    transform: translateZ(3.5rem) translateY(0rem) rotate(0deg);
+  }
+  50% {
+    transform: translateZ(3.5rem) translateY(-0.65rem) rotate(-1.5deg);
+  }
+}
+
+@keyframes altarRise {
+  0% {
+    opacity: 0;
+    transform: translateY(2rem) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0rem) scale(1);
+  }
+}
+
+@keyframes doorRayBeams {
+  0%, 100% {
+    opacity: 0.65;
+    transform: scaleX(1);
+  }
+  50% {
+    opacity: 0.95;
+    transform: scaleX(1.15);
+  }
+}
+
+@keyframes batFlyTowardCamera {
+  0% {
+    opacity: 0;
+    transform: perspective(50rem) translateZ(-30rem) translateY(4rem) scale(0.15) rotate(-15deg);
+  }
+  20% {
+    opacity: 1;
+  }
+  85% {
+    opacity: 0.95;
+  }
+  100% {
+    opacity: 0;
+    transform: perspective(50rem) translateZ(35rem) translateY(-15rem) scale(2.8) rotate(25deg);
+  }
+}
+
+@keyframes genieMatWave {
+  0%, 100% {
+    transform: perspective(50rem) rotateX(12deg) rotateY(-4deg) translateY(0rem) skewY(0.5deg);
+  }
+  33% {
+    transform: perspective(50rem) rotateX(8deg) rotateY(6deg) translateY(-0.85rem) skewY(-1deg);
+  }
+  66% {
+    transform: perspective(50rem) rotateX(16deg) rotateY(-2deg) translateY(0.45rem) skewY(1deg);
+  }
+}
+
+@keyframes skyLanternRise {
+  0% {
+    transform: translateY(0rem) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-1.25rem) rotate(2deg);
+  }
+  100% {
+    transform: translateY(0rem) rotate(-2deg);
+  }
+}
+
+@keyframes mistDriftSlow {
+  0% {
+    transform: translateX(-5%) scaleX(1);
+    opacity: 0.35;
+  }
+  50% {
+    transform: translateX(5%) scaleX(1.08);
+    opacity: 0.55;
+  }
+  100% {
+    transform: translateX(-5%) scaleX(1);
+    opacity: 0.35;
+  }
+}
+
+@keyframes pumpkinCandleGlow {
+  0%, 100% {
+    filter: drop-shadow(0 0 0.5rem #f59e0b) drop-shadow(0 0 1rem #d97706);
     opacity: 0.9;
   }
-
-  100% {
-    left: 110%;
-    opacity: 0;
-    transform: translateY(20px) rotate(-5deg);
+  25% {
+    filter: drop-shadow(0 0 0.75rem #fbbf24) drop-shadow(0 0 1.4rem #b45309);
+    opacity: 1;
+  }
+  60% {
+    filter: drop-shadow(0 0 0.35rem #d97706) drop-shadow(0 0 0.8rem #78350f);
+    opacity: 0.8;
+  }
+  80% {
+    filter: drop-shadow(0 0 0.9rem #fde047) drop-shadow(0 0 1.6rem #f59e0b);
+    opacity: 1;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .bat {
-    animation: none;
-    display: none;
-  }
-}
-
-
-
-@media (prefers-reduced-motion: reduce) {
-  body::before {
-    animation: none;
+  .animate-sway,
+  .animate-fairy-glow,
+  .animate-card-sway,
+  .animate-lantern-pulse,
+  .animate-dust-float,
+  .animate-washi-flutter,
+  .animate-astrolabe-1,
+  .animate-astrolabe-2,
+  .animate-astrolabe-3,
+  .animate-bat-fly,
+  .animate-genie-mat,
+  .animate-sky-lantern {
+    animation: none !important;
   }
 }
